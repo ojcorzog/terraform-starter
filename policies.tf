@@ -128,3 +128,17 @@ resource "spacelift_policy" "login" {
   name = "DevOps are admins"
   body = file("${path.module}/policies/login.rego")
 }
+
+
+resource "spacelift_policy" "comments" {
+  type = "GIT_PUSH"
+
+  name = "plan from pr comments"
+  body = file("${path.module}/policies/spacelift-pull-requests.rego")
+}
+
+# Push policies only take effect when attached to the stack.
+resource "spacelift_policy_attachment" "push" {
+  policy_id = spacelift_policy.push.id
+  stack_id  = spacelift_stack.managed.id
+}
