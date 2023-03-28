@@ -9,7 +9,7 @@ resource "spacelift_stack" "managed" {
   project_root = "managed-stack"
 
   autodeploy = true
-  labels     = ["managed", "depends-on:${data.spacelift_current_stack.this.id}"]
+  labels     = ["managed", "depends-on:${data.spacelift_current_stack.this.id}", "feature:add_plan_pr_comment"]
 }
 
 # This is an environment variable defined on the stack level. Stack-level
