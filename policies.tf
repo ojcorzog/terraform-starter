@@ -138,7 +138,7 @@ resource "spacelift_policy" "comments" {
 }
 
 # Push policies only take effect when attached to the stack.
-resource "spacelift_policy_attachment" "push" {
+resource "spacelift_policy_attachment" "comments" {
   policy_id = spacelift_policy.push.id
   stack_id  = spacelift_stack.managed.id
 }
