@@ -28,7 +28,7 @@ resource "spacelift_environment_variable" "context-plaintext" {
 # For another (secret) variable, let's create programmatically create a super
 # secret password.
 resource "random_password" "context-password" {
-  length  = 32
+  length  = 36
   special = true
 }
 
