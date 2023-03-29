@@ -133,12 +133,12 @@ resource "spacelift_policy" "login" {
 resource "spacelift_policy" "comments" {
   type = "GIT_PUSH"
 
-  name = "plan from pr comments"
+  name = "deploy from pr comments"
   body = file("${path.module}/policies/spacelift-pull-requests.rego")
 }
 
 # Push policies only take effect when attached to the stack.
 resource "spacelift_policy_attachment" "comments" {
-  policy_id = spacelift_policy.push.id
+  policy_id = spacelift_policy.comments.id
   stack_id  = spacelift_stack.managed.id
 }
