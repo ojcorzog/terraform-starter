@@ -30,7 +30,7 @@ resource "spacelift_stack" "non-prod" {
 
   repository   = "terraform-starter"
   branch       = "main"
-  project_root = "envoironments/non-prod"
+  project_root = "environments/non-prod"
 
   autodeploy = true
   labels     = ["managed", "depends-on:${data.spacelift_current_stack.this.id}", "feature:add_plan_pr_comment"]
