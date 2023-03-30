@@ -14,7 +14,7 @@ resource "spacelift_stack" "managed" {
 
 resource "spacelift_stack" "dev-stack" {
   name        = "Dev stack"
-  description = "Your first stack managed by Terraform"
+  description = "Dev Environment"
 
   repository   = "terraform-starter"
   branch       = "main"
@@ -26,7 +26,7 @@ resource "spacelift_stack" "dev-stack" {
 
 resource "spacelift_stack" "non-prod" {
   name        = "Non Prod stack"
-  description = "Your first stack managed by Terraform"
+  description = "Non Prod Environment"
 
   repository   = "terraform-starter"
   branch       = "main"
@@ -38,7 +38,7 @@ resource "spacelift_stack" "non-prod" {
 
 resource "spacelift_stack" "prod-stack" {
   name        = "Prod stack"
-  description = "Your first stack managed by Terraform"
+  description = "Prod Environment"
 
   repository   = "terraform-starter"
   branch       = "main"
