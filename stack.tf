@@ -26,7 +26,7 @@ resource "spacelift_stack" "dev-stack" {
 
 resource "spacelift_stack" "non-prod" {
   name        = "Non Prod stack"
-  description = "Non Prod Environment"
+  description = "Non Prod Environment concurrent commits test"
 
   repository   = "terraform-starter"
   branch       = "main"
