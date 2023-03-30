@@ -12,6 +12,42 @@ resource "spacelift_stack" "managed" {
   labels     = ["managed", "depends-on:${data.spacelift_current_stack.this.id}", "feature:add_plan_pr_comment"]
 }
 
+resource "spacelift_stack" "dev-stack" {
+  name        = "Dev stack"
+  description = "Your first stack managed by Terraform"
+
+  repository   = "terraform-starter"
+  branch       = "main"
+  project_root = "environments/dev"
+
+  autodeploy = true
+  labels     = ["managed", "depends-on:${data.spacelift_current_stack.this.id}", "feature:add_plan_pr_comment"]
+}
+
+resource "spacelift_stack" "non-prod" {
+  name        = "Non Prod stack"
+  description = "Your first stack managed by Terraform"
+
+  repository   = "terraform-starter"
+  branch       = "main"
+  project_root = "envoironments/non-prod"
+
+  autodeploy = true
+  labels     = ["managed", "depends-on:${data.spacelift_current_stack.this.id}", "feature:add_plan_pr_comment"]
+}
+
+resource "spacelift_stack" "prod-stack" {
+  name        = "Prod stack"
+  description = "Your first stack managed by Terraform"
+
+  repository   = "terraform-starter"
+  branch       = "main"
+  project_root = "environments/prod"
+
+  autodeploy = true
+  labels     = ["managed", "depends-on:${data.spacelift_current_stack.this.id}", "feature:add_plan_pr_comment"]
+}
+
 # This is an environment variable defined on the stack level. Stack-level
 # environment variables take precedence over those attached via contexts.
 # This evironment variable has its write_only bit explicitly set to false, which
