@@ -130,7 +130,7 @@ resource "spacelift_policy" "login" {
 }
 
 
-resource "spacelift_policy" "comments" {
+resource "spacelift_policy" "comments_deploy" {
   type = "GIT_PUSH"
 
   name = "deploy from pr comments"
@@ -138,7 +138,20 @@ resource "spacelift_policy" "comments" {
 }
 
 # Push policies only take effect when attached to the stack.
-resource "spacelift_policy_attachment" "comments" {
-  policy_id = spacelift_policy.comments.id
+resource "spacelift_policy_attachment" "comments_deploy" {
+  policy_id = spacelift_policy.comments_deploy.id
+  stack_id  = spacelift_stack.managed.id
+}
+
+resource "spacelift_policy" "comments_plan" {
+  type = "GIT_PUSH"
+
+  name = "plan from pr comments"
+  body = file("${path.module}/policies/spacelift-pull-requests-plan.rego")
+}
+
+# Push policies only take effect when attached to the stack.
+resource "spacelift_policy_attachment" "comments_plan" {
+  policy_id = spacelift_policy.comments_plan.id
   stack_id  = spacelift_stack.managed.id
 }
